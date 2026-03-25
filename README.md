@@ -96,33 +96,21 @@ Run this command in Claude Code to register this repository as a plugin source:
 /plugin marketplace add muratcankoylan/Agent-Skills-for-Context-Engineering
 ```
 
-**Step 2: Browse and Install**
+**Step 2: Install the Plugin**
 
-Option A - Browse available plugins:
+Option A - Browse and install:
 1. Select `Browse and install plugins`
 2. Select `context-engineering-marketplace`
-3. Choose a plugin (e.g., `context-engineering-fundamentals`, `agent-architecture`)
+3. Select `context-engineering`
 4. Select `Install now`
 
 Option B - Direct install via command:
 
 ```
-/plugin install context-engineering-fundamentals@context-engineering-marketplace
-/plugin install agent-architecture@context-engineering-marketplace
-/plugin install agent-evaluation@context-engineering-marketplace
-/plugin install agent-development@context-engineering-marketplace
-/plugin install cognitive-architecture@context-engineering-marketplace
+/plugin install context-engineering@context-engineering-marketplace
 ```
 
-### Available Plugins
-
-| Plugin | Skills Included |
-|--------|-----------------|
-| `context-engineering-fundamentals` | context-fundamentals, context-degradation, context-compression, context-optimization |
-| `agent-architecture` | multi-agent-patterns, memory-systems, tool-design, filesystem-context, hosted-agents |
-| `agent-evaluation` | evaluation, advanced-evaluation |
-| `agent-development` | project-development |
-| `cognitive-architecture` | bdi-mental-states |
+This installs all 13 skills in a single plugin. Skills are activated automatically based on your task context.
 
 ### Skill Triggers
 
@@ -149,6 +137,19 @@ Option B - Direct install via command:
 This repository is listed on the [Cursor Plugin Directory](https://cursor.directory/plugins/context-engineering).
 
 The `.plugin/plugin.json` manifest follows the [Open Plugins](https://open-plugins.com) standard, so the repo also works with any conformant agent tool (Codex, GitHub Copilot, etc.).
+
+### Using Individual Skills
+
+To use a single skill without installing the full plugin, copy its `SKILL.md` directly into your project's `.claude/skills/` directory:
+
+```bash
+# Example: add just the context-fundamentals skill
+mkdir -p .claude/skills
+curl -o .claude/skills/context-fundamentals.md \
+  https://raw.githubusercontent.com/muratcankoylan/Agent-Skills-for-Context-Engineering/main/skills/context-fundamentals/SKILL.md
+```
+
+Available skills: `context-fundamentals`, `context-degradation`, `context-compression`, `context-optimization`, `multi-agent-patterns`, `memory-systems`, `tool-design`, `filesystem-context`, `hosted-agents`, `evaluation`, `advanced-evaluation`, `project-development`, `bdi-mental-states`
 
 ### For Custom Implementations
 
